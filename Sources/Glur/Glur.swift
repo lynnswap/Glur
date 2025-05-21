@@ -35,4 +35,21 @@ extension View {
                                                   direction: direction))
         }
     }
+    
+    @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
+    func glur(
+        radius: CGFloat = 12,
+        length: CGFloat,
+        interpolation: CGFloat = 0.4,
+        direction: BlurDirection = .down
+    ) -> some View {
+        modifier(
+            GlurLengthBandModifier(
+                radius: radius,
+                length: length,
+                interpolation:interpolation,
+                direction: direction
+            )
+        )
+    }
 }
