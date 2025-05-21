@@ -57,4 +57,23 @@ extension View {
             )
         )
     }
+    
+    @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
+    public func glurCompat(
+        radius: CGFloat = 12,
+        length: CGFloat,
+        interpolation: CGFloat = 0.4,
+        direction: BlurDirection = .down,
+        isEnabled: Bool = true
+    ) -> some View {
+        modifier(
+            CompatibilityLengthBandModifier(
+                radius: radius,
+                length: length,
+                interpolation: interpolation,
+                direction: direction,
+                isEnabled: isEnabled
+            )
+        )
+    }
 }
