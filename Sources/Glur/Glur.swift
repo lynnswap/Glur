@@ -40,7 +40,7 @@ extension View {
     }
     
     @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
-    func glur(
+    public func glur(
         radius: CGFloat = 12,
         length: CGFloat,
         interpolation: CGFloat = 0.4,
