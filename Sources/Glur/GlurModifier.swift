@@ -13,6 +13,7 @@ internal struct GlurModifier: ViewModifier {
     public var offset: CGFloat
     public var interpolation: CGFloat
     public var direction: BlurDirection
+    public var isEnabled: Bool = true
     
     @Environment(\.displayScale) var displayScale
     
@@ -41,7 +42,7 @@ internal struct GlurModifier: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .drawingGroup()
-            .layerEffect(blurX, maxSampleOffset: .zero)
-            .layerEffect(blurY, maxSampleOffset: .zero)
+            .layerEffect(blurX, maxSampleOffset: .zero, isEnabled: isEnabled)
+            .layerEffect(blurY, maxSampleOffset: .zero, isEnabled: isEnabled)
     }
 }

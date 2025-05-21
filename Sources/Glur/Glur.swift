@@ -18,7 +18,8 @@ extension View {
     public func glur(radius: CGFloat = 8.0,
                      offset: CGFloat = 0.3,
                      interpolation: CGFloat = 0.4,
-                     direction: BlurDirection = .down) -> some View {
+                     direction: BlurDirection = .down,
+                     isEnabled: Bool = true) -> some View {
         assert(radius >= 0.0, "Radius must be greater than or equal to 0")
         assert(offset >= 0.0 && offset <= 1.0, "Offset must be between 0 and 1")
         assert(interpolation >= 0.0 && interpolation <= 1.0, "Interpolation must be between 0 and 1")
@@ -27,12 +28,14 @@ extension View {
             return modifier(GlurModifier(radius: radius,
                                          offset: offset,
                                          interpolation: interpolation,
-                                         direction: direction))
+                                         direction: direction,
+                                         isEnabled: isEnabled))
         } else {
             return modifier(CompatibilityModifier(radius: radius,
                                                   offset: offset,
                                                   interpolation: interpolation,
-                                                  direction: direction))
+                                                  direction: direction,
+                                                  isEnabled: isEnabled))
         }
     }
     
@@ -41,14 +44,16 @@ extension View {
         radius: CGFloat = 12,
         length: CGFloat,
         interpolation: CGFloat = 0.4,
-        direction: BlurDirection = .down
+        direction: BlurDirection = .down,
+        isEnabled: Bool = true
     ) -> some View {
         modifier(
             GlurLengthBandModifier(
                 radius: radius,
                 length: length,
                 interpolation:interpolation,
-                direction: direction
+                direction: direction,
+                isEnabled: isEnabled
             )
         )
     }

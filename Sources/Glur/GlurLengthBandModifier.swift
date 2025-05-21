@@ -13,6 +13,7 @@ public struct GlurLengthBandModifier: ViewModifier {
     public var length: CGFloat
     public var interpolation: CGFloat
     public var direction: BlurDirection
+    public var isEnabled: Bool = true
     
     @State private var dimensionPx: CGFloat = .greatestFiniteMagnitude
     private static let epsilon: CGFloat = 1e-4
@@ -30,7 +31,8 @@ public struct GlurLengthBandModifier: ViewModifier {
                     radius: radius,
                     offset: offsetRatio,
                     interpolation: interpolation,
-                    direction: direction
+                    direction: direction,
+                    isEnabled: isEnabled
                 )
             )
     }

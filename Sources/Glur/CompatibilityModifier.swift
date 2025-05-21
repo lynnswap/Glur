@@ -12,16 +12,19 @@ internal struct CompatibilityModifier: ViewModifier {
     public var offset: CGFloat
     public var interpolation: CGFloat
     public var direction: BlurDirection
+    public var isEnabled: Bool = true
     
     func body(content: Content) -> some View {
         content
             .overlay {
-                content
-                    .drawingGroup()
-                    .allowsHitTesting(false)
-                    .blur(radius: radius)
-                    .scaleEffect(1+(radius*0.02))
-                    .mask(gradientMask)
+                if isEnabled {
+                    content
+                        .drawingGroup()
+                        .allowsHitTesting(false)
+                        .blur(radius: radius)
+                        .scaleEffect(1+(radius*0.02))
+                        .mask(gradientMask)
+                }
             }
     }
     
